@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NANZERA AI Trader</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+  <div>
+    <div class="brand">NANZERA</div>
+    <div class="sub">AI TRADER • PAPER V8</div>
+  </div>
+
+  <div id="systemStatus" class="pill ok">READY</div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div>
+      <span class="muted">MARKET</span>
+      <h1>XAUUSD</h1>
+
+      <p id="dataStatus">
+        Demo data aktif — belum terhubung ke market real-time.
+      </p>
+    </div>
+
+    <div class="price">
+      <span class="muted">PRICE</span>
+      <strong id="currentPrice">—</strong>
+      <span id="priceChange">—</span>
+    </div>
+  </section>
+
+
+  <section class="toolbar card">
+
+    <label>
+      Timeframe
+
+      <select id="timeframe">
+        <option>M1</option>
+        <option selected>M5</option>
+        <option>M15</option>
+        <option>H1</option>
+      </select>
+    </label>
+
+    <button id="analyzeBtn">
+      ANALYZE MARKET
+    </button>
+
+    <button id="simulateBtn" class="secondary">
+      SIMULATE DATA
+    </button>
+
+  </section>
+
+
+  <section class="grid two">
+
+    <!-- MARKET CHART -->
+    <div class="card">
+
+      <div class="title">
+        <h2>Market Chart</h2>
+
+        <span id="candleInfo" class="muted">
+          0 candles
+        </span>
+      </div>
+
+      <canvas id="chart"></canvas>
+
+    </div>
+
+
+    <!-- AI ANALYZER -->
+    <div class="card">
+
+      <div class="title">
+        <h2>AI Analyzer</h2>
+
+        <span id="score" class="score">
+          0/100
+        </span>
+      </div>
+
+
+      <div id="signal" class="signal wait">
+        WAIT
+      </div>
+
+
+      <div class="metrics">
+
+        <div>
+          <span>Trend</span>
+          <b id="trend">UNKNOWN</b>
+        </div>
+
+        <div>
+          <span>Structure</span>
+          <b id="structure">UNKNOWN</b>
+        </div>
+
+        <div>
+          <span>Momentum</span>
+          <b id="momentum">UNKNOWN</b>
+        </div>
+
+        <div>
+          <span>Risk</span>
+          <b id="riskStatus">NOT CHECKED</b>
+        </div>
+
+      </div>
+
+
+      <div class="reason">
+
+        <span class="muted">
+          REASONS
+        </span>
+
+        <p id="reasons">
+          Belum ada analisis.
+        </p>
+
+      </div>
+
+
+      <div class="levels">
+
+        <div>
+          <span>Entry</span>
+          <b id="entry">—</b>
+        </div>
+
+        <div>
+          <span>SL</span>
+          <b id="sl">—</b>
+        </div>
+
+        <div>
+          <span>TP</span>
+          <b id="tp">—</b>
+        </div>
+
+        <div>
+          <span>RR</span>
+          <b id="rr">—</b>
+        </div>
+
+      </div>
+
+
+      <button id="paperBtn" disabled>
+        PAPER TRADE
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- PAPER ACCOUNT -->
+  <section class="grid three">
+
+    <div class="card">
+
+      <span class="muted">
+        PAPER BALANCE
+      </span>
+
+      <h2 id="balance">
+        $10,000.00
+      </h2>
+
+    </div>
+
+
+    <div class="card">
+
+      <span class="muted">
+        POSITION
+      </span>
+
+      <h2 id="position">
+        NONE
+      </h2>
+
+    </div>
+
+
+    <div class="card">
+
+      <span class="muted">
+        DAILY TRADES
+      </span>
+
+      <h2 id="dailyTrades">
+        0 / 3
+      </h2>
+
+    </div>
+
+  </section>
+
+
+  <!-- BACKTEST -->
+  <section class="card">
+
+    <div class="title">
+
+      <h2>
+        Backtest
+      </h2>
+
+      <button id="backtestBtn" class="secondary">
+        RUN BACKTEST
+      </button>
+
+    </div>
+
+    <div id="backtestSummary" class="backtest">
+      Belum ada backtest.
+    </div>
+
+  </section>
+
+
+  <!-- TRADE JOURNAL -->
+  <section class="card">
+
+    <div class="title">
+
+      <h2>
+        Trade Journal
+      </h2>
+
+      <button id="clearJournal" class="danger">
+        CLEAR
+      </button>
+
+    </div>
+
+
+    <div class="tablewrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>ID</th>
+            <th>Side</th>
+            <th>Entry</th>
+            <th>SL</th>
+            <th>TP</th>
+            <th>Status</th>
+            <th>P/L</th>
+          </tr>
+
+        </thead>
+
+
+        <tbody id="journalBody">
+
+          <tr>
+
+            <td colspan="7" class="muted">
+              Belum ada trade.
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- SAFETY CENTER -->
+  <section class="card safety">
+
+    <h2>
+      Safety Center
+    </h2>
+
+    <ul id="safetyList">
+
+      <li>
+        Paper mode aktif
+      </li>
+
+      <li>
+        Real-money execution DISABLED
+      </li>
+
+      <li>
+        Duplicate-order protection aktif
+      </li>
+
+      <li>
+        Invalid-data protection aktif
+      </li>
+
+    </ul>
+
+  </section>
+
+</main>
+
+
+<!-- JAVASCRIPT MODULES -->
+
+<script src="data/config.js"></script>
+
+<script src="js/utils.js"></script>
+
+<script src="js/market.js"></script>
+
+<script src="js/analyzer.js"></script>
+
+<script src="js/strategy.js"></script>
+
+<script src="js/risk.js"></script>
+
+<script src="js/paper.js"></script>
+
+<script src="js/journal.js"></script>
+
+<script src="js/backtest.js"></script>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
