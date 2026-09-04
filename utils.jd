@@ -1,0 +1,1 @@
+const $=id=>document.getElementById(id);function num(v){return Number.isFinite(Number(v))}function clamp(v,a,b){return Math.max(a,Math.min(b,v))}function id(){return "NZR-"+Date.now().toString(36).toUpperCase()+"-"+Math.random().toString(36).slice(2,6).toUpperCase()}function fmt(v){return num(v)?Number(v).toFixed(2):"—"}function status(s){$("systemStatus").textContent=s}
