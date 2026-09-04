@@ -1,0 +1,1 @@
+const Strategy={evaluate(a){if(!a||a.signal==="WAIT")return{approved:false,reason:"Tidak ada setup valid."};if(a.score<NANZERA_CONFIG.minScore)return{approved:false,reason:"Score di bawah minimum."};return{approved:true,reason:"Setup melewati filter strategi."}}};
